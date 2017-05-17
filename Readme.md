@@ -8,6 +8,10 @@ An *instant kickstart* consists of a recompilation of the Go code and a restart 
 
 Kick comes with the ability to take both the `go` and `gopherjs` commands into consideration when performing the *instant kickstart*.
 
+Please note, that Kick, currently works on Unix-like operating systems (e.g., BSD, Linux, Mac OS) only. 
+
+Kick doesn't work on Windows, due to some [technical limitations](https://github.com/fsnotify/fsnotify/issues/53).
+
 ## Installation
 
 Before installing Kick, it is recommended, to install the barebones [isogoapp](https://github.com/isomorphicgo/isogoapp) first – since it will provide you an example of how to use kick.

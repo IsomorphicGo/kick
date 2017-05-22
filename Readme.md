@@ -1,7 +1,7 @@
 <p align="center"><a href="http://isomorphicgo.org" target="_blank"><img src="https://github.com/isomorphicgo/isogoapp/blob/master/static/images/isomorphic_go_logo.png"></a></p>
 
 # Kick
--
+
 [![Go Report Card](https://goreportcard.com/badge/github.com/isomorphicgo/kick)](https://goreportcard.com/report/github.com/isomorphicgo/kick)
 
 A lightweight mechanism to provide an *instant kickstart* to a Go web server instance, upon the modification of a Go source file within a particular project directory (including any subdirectories).

@@ -34,6 +34,8 @@ func start() *exec.Cmd {
 
 	cmd := exec.Command("go", "run", appPath+"/"+mainSourceFile)
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	cmd.Start()
 	return cmd
 

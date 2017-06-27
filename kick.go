@@ -1,3 +1,8 @@
+// The Isomorphic Go Project
+// Copyright (c) Wirecog, LLC. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license, which can be found in the LICENSE file.
+
 package main
 
 import (
@@ -170,7 +175,7 @@ func main() {
 			os.Exit(0)
 
 		case <-shouldRestart:
-			fmt.Println("Recompiling and Restarting")
+			fmt.Println("\nInstant KickStart Applied! (Recompiling and restarting project.)")
 			cmd = restart(cmd)
 
 		}

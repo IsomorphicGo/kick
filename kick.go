@@ -32,6 +32,8 @@ func start() *exec.Cmd {
 		} else {
 			os.Chdir(gopherjsAppPath)
 			gjsCommand := exec.Command("gopherjs", "build")
+			gjsCommand.Stdout = os.Stdout
+			gjsCommand.Stderr = os.Stderr
 			gjsCommand.Start()
 			os.Chdir(cwd)
 		}

@@ -13,7 +13,6 @@ import (
 	"os/exec"
 	"os/signal"
 	"path/filepath"
-	"syscall"
 
 	"github.com/fsnotify/fsnotify"
 )
@@ -22,7 +21,7 @@ var appPath string
 var mainSourceFile string
 var gopherjsAppPath string
 
-func start() *exec.Cmd {
+func buildGopherJSProject() {
 
 	if gopherjsAppPath != "" {
 
@@ -39,20 +38,6 @@ func start() *exec.Cmd {
 		}
 	}
 
-	cmd := exec.Command("go", "run", appPath+"/"+mainSourceFile)
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	cmd.Start()
-	return cmd
-
-}
-
-func stop(cmd *exec.Cmd) {
-	pgid, err := syscall.Getpgid(cmd.Process.Pid)
-	if err == nil {
-		syscall.Kill(-pgid, 15)
-	}
 }
 
 func restart(cmd *exec.Cmd) *exec.Cmd {

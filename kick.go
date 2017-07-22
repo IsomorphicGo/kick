@@ -50,6 +50,7 @@ func restart(cmd *exec.Cmd) *exec.Cmd {
 
 func initializeWatcher(shouldRestart chan bool, dirList []string) {
 
+	supportedExtensions := map[string]int{".go": 1, ".html": 1, ".tmpl": 1}
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)
@@ -63,7 +64,7 @@ func initializeWatcher(shouldRestart chan bool, dirList []string) {
 			case event := <-watcher.Events:
 
 				if event.Op == fsnotify.Write || event.Op == fsnotify.Rename {
-					if filepath.Ext(event.Name) == ".go" {
+					if _, ok := supportedExtensions[filepath.Ext(event.Name)]; ok {
 						shouldRestart <- true
 					}
 				}

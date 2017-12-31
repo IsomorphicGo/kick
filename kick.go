@@ -14,6 +14,8 @@ import (
 	"os/signal"
 	"path/filepath"
 
+	"runtime"
+
 	"github.com/fsnotify/fsnotify"
 )
 
@@ -30,11 +32,18 @@ func buildGopherJSProject() {
 			log.Fatal("Encountered an error while attempting to get the cwd: ", err)
 		} else {
 			os.Chdir(gopherjsAppPath)
+
 			gjsCommand := exec.Command("gopherjs", "build")
+			if runtime.GOOS == "windows" {
+				// workaround as described here: https://github.com/gopherjs/gopherjs/issues/688
+
+				gjsCommand.Env = append(os.Environ(), "GOOS=darwin")
+			}
 			gjsCommand.Stdout = os.Stdout
 			gjsCommand.Stderr = os.Stderr
 			gjsCommand.Start()
 			os.Chdir(cwd)
+
 		}
 	}
 

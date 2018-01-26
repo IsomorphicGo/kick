@@ -44,7 +44,7 @@ If your Go project is not using GopherJS, you can feel free to omit the `gopherj
 
 ### Verify That Kick Is Functioning
 
-Assuming that you've installed the [isogoapp](https://github.com/isomorphicgo/isogo), and you have issued the kick command to run the web server instance:
+Assuming that you've installed the [isogoapp](https://github.com/isomorphicgo/isogoapp), and you have issued the kick command to run the web server instance:
 
 Access the [test page](http://localhost:8080) for the `isogoapp` using your web browser.
 
